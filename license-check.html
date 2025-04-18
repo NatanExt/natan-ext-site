@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Natan Ext – License Check</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="brand">Natan Ext</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="license-check.html" class="active">License Check</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h2>Check Your License</h2>
+    <input type="text" id="licenseKey" placeholder="Enter license key">
+    <button onclick="verifyLicense()">Check</button>
+    <p id="result"></p>
+  </main>
+  <script>
+    function verifyLicense() {
+      const key = document.getElementById('licenseKey').value;
+      fetch(`https://yourdomain.com/license/validate.php?key=${key}`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('result').textContent =
+            data.status === "valid" ? "License is valid." : "Invalid license.";
+        });
+    }
+  </script>
+  <footer>
+    © 2025 Natan Ext – All rights reserved.
+  </footer>
+</body>
+</html>
